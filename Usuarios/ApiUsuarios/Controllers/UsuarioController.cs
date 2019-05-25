@@ -13,7 +13,7 @@ namespace ApiUsuarios.Controllers
     {
         //funcion que lista todos los elementos de la base de datos
         [HttpGet]
-        public IEnumerable<Usuario> Get()
+        public IEnumerable<Usuario> ListarUsuarios()
         {
             using (var context = new ApiContext())
             {
@@ -23,7 +23,7 @@ namespace ApiUsuarios.Controllers
 
         //funcion que busca un usuario por email
         [HttpGet]
-        public Usuario Get(string email)
+        public Usuario BuscarUsuario(string email)
         {
             using (var context = new ApiContext())
             {
@@ -33,7 +33,7 @@ namespace ApiUsuarios.Controllers
         
         // funcion que crea nuevos usuarios
         [HttpPost]
-        public IHttpActionResult Post(Usuario usuario)
+        public IHttpActionResult CrearUsuario(Usuario usuario)
         {
             if (!ModelState.IsValid)
             {
@@ -49,14 +49,14 @@ namespace ApiUsuarios.Controllers
 
         //funcion que actualiza o edita un usuario buscado por su id
         [HttpPut]
-        public Usuario Put(Usuario usuario)
+        public Usuario EditarUsuario(Usuario usuario)
         {
             using (var context = new ApiContext())
             {
                 var usuarioAct = context.Usuarios.FirstOrDefault(x => x.id == usuario.id);
                 usuarioAct.nombre = usuario.nombre;
                 usuarioAct.email = usuario.email;
-                usuarioAct.password = usuario.password;
+                usuarioAct.password = usuario.password; 
                 context.SaveChanges();
                 return usuario;
             }
@@ -64,7 +64,7 @@ namespace ApiUsuarios.Controllers
 
         //funcion que elimina un usuario buscado por su id
         [HttpDelete]
-        public bool Delete(int id)
+        public bool EliminarUsuario(int id)
         {
             using (var context = new ApiContext())
             {
