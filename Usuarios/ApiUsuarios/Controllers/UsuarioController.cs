@@ -8,8 +8,10 @@ using System.Web.Http;
 
 namespace ApiUsuarios.Controllers
 {
+    //clase que contiene los metodos del crud
     public class UsuarioController : ApiController
     {
+        //funcion que lista todos los elementos de la base de datos
         [HttpGet]
         public IEnumerable<Usuario> Get()
         {
@@ -19,6 +21,7 @@ namespace ApiUsuarios.Controllers
             }
         }
 
+        //funcion que busca un usuario por email
         [HttpGet]
         public Usuario Get(string email)
         {
@@ -27,7 +30,8 @@ namespace ApiUsuarios.Controllers
                 return context.Usuarios.FirstOrDefault(x => x.email == email);
             }
         }
-
+        
+        // funcion que crea nuevos usuarios
         [HttpPost]
         public IHttpActionResult Post(Usuario usuario)
         {
@@ -43,6 +47,7 @@ namespace ApiUsuarios.Controllers
             }
         }
 
+        //funcion que actualiza o edita un usuario buscado por su id
         [HttpPut]
         public Usuario Put(Usuario usuario)
         {
@@ -57,6 +62,7 @@ namespace ApiUsuarios.Controllers
             }
         }
 
+        //funcion que elimina un usuario buscado por su id
         [HttpDelete]
         public bool Delete(int id)
         {
