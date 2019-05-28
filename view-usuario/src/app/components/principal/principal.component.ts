@@ -11,7 +11,7 @@ import { UsuarioService } from '../../service/usuario.service';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
   }
@@ -20,5 +20,11 @@ export class PrincipalComponent implements OnInit {
 
     console.log('datos');
 
+  }
+
+  borrarForm(form?: NgForm) {
+    if(form) {
+      form.reset();
+    }
   }
 }

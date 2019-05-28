@@ -1,27 +1,29 @@
 <div class="my-5"></div>
-<div class="jumbotron">
-  <div class="row">
+  <div class="row fondo">
     <div class="col-md-3">
       <h4>
         Nuevos Registro
       </h4>
       <form #registroForm="ngForm" (ngSubmit)="enviarRegistro(registroForm)">
         <div class="form-group">
-          <input type="text" class="form-control" id="nombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" #nombre="ngModel" [(NgModel)]="UsuarioService.seleccionarUsuario.nombre" required>
+          <input id="nombre" type="text" class="form-control" name="nombre" #nombre="ngModel"
+            [(ngModel)]="usuarioService.seleccionarUsuario.nombre" placeholder="Nombre" required>
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Email" #email="ngModel" [(NgModel)]="UsuarioService.seleccionarUsuario.email" required>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+            placeholder="Email" #email="ngModel" [(ngModel)]="usuarioService.seleccionarUsuario.email" required>
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp" #password="ngModel" [(NgModel)]="UsuarioService.seleccionarUsuario.password" placeholder="Password" required>
+          <input type="password" class="form-control" id="password" name="password" aria-describedby="passwordHelp"
+            #password="ngModel" [(ngModel)]="usuarioService.seleccionarUsuario.password" placeholder="Password"
+            required>
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
+        <a class="btn btn-warning" (click)="borrarForm(registroForm)">Borrar</a>
       </form>
+
     </div>
     <div class="col-md-9">
-      <h4>
-        Usuarios Registrados
-      </h4>
+      <app-usuarios></app-usuarios>
     </div>
   </div>
-</div>

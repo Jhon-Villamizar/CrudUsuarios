@@ -1,0 +1,17 @@
+<h4>
+  Usuarios Registrados
+</h4>
+<div class="row" *ngFor="let usuario of usuarioService.usuarios">
+    <div class="col-md-6">
+      <div class="card usuario">
+          <h5 class="card-header">{{usuario.nombre}}</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{usuario.email}}</h5>
+            <p class="card-text">{{usuario.password}}</p>
+            <a href="#" class="btn btn-primary">Actualizar</a>
+            <a href="#" class="btn btn-danger">Eliminar</a>
+          </div>
+      </div>
+    </div>
+    
+  </div>
