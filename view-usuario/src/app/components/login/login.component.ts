@@ -28,11 +28,8 @@ export class LoginComponent implements OnInit {
    */
   cambioEstado(form?: NgForm) {
     if (this.login === true) {
-      console.log(form.value);
       this.email = form.value.email;
       this.password = btoa(form.value.password);
-      console.log('password => ', this.password);
-      
       this.autenticar(this.email, this.password)
     }
   }
@@ -45,7 +42,6 @@ export class LoginComponent implements OnInit {
   autenticar(email: string, password: string){
     this.usuarioService.buscarUsuario(email,password)
     .subscribe(res =>{
-      console.log('respuesta => ', res);
       if(res === true){
         this.login = false;
         this.principal = true;

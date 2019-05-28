@@ -21,7 +21,6 @@ export class PrincipalComponent implements OnInit {
    * @param form 
    */
   enviarRegistro(form?: NgForm) {
-    console.log(form.value);
     if (form.value.id) {
       this.usuarioService.editarUsuario(form.value)
       .subscribe(res => {
@@ -43,7 +42,6 @@ export class PrincipalComponent implements OnInit {
     this.usuarioService.listarUsuarios()
       .subscribe(res => {
         this.usuarioService.usuarios = res as {};
-        console.log( this.usuarioService.usuarios);
       });
   }
   /**
@@ -51,7 +49,6 @@ export class PrincipalComponent implements OnInit {
    * @param usuario 
    */
   editarUsuario(usuario:Usuario){
-    console.log('Editar');
     this.usuarioService.seleccionarUsuario = usuario;
     
   }
@@ -61,7 +58,6 @@ export class PrincipalComponent implements OnInit {
    * @param form 
    */
   eliminarUsuario(id: number, form:NgForm){
-    console.log('Eliminar');
     if(confirm('Esta seguro de eliminar este Usuario?')){
       this.usuarioService.eliminarUsuario(id)
       .subscribe(res => {
