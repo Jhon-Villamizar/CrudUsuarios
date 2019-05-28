@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class UsuarioService {
     seleccionarUsuario: Usuario;
     usuarios: {};
-    readonly URL_API = 'http://jhonvio-001-site1.itempurl.com/api/Usuario';
+    // readonly URL_API = 'http://jhonvio-001-site1.itempurl.com/api/Usuario';
+    readonly URL_API = 'http://localhost:60493/api/Usuario';
     constructor(private http: HttpClient) {
         this.seleccionarUsuario = new Usuario();
     }

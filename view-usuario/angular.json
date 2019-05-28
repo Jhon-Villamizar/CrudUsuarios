@@ -64,8 +64,7 @@
             "production": {
               "browserTarget": "view-usuario:build:production"
             }
-          },
-          "proxyConfig": "./proxy.config.js"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
