@@ -202,3 +202,6 @@ C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\obj\Debug\ApiUsuarios.csproj.CoreCo
 C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\obj\Debug\ApiUsuarios.csproj.CopyComplete
 C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\obj\Debug\ApiUsuarios.dll
 C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\obj\Debug\ApiUsuarios.pdb
+C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\bin\System.Web.Cors.dll
+C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\bin\System.Web.Http.Cors.dll
+C:\Jhon\C#\CrudUsuarios\Usuarios\ApiUsuarios\bin\System.Web.Http.Cors.xml
