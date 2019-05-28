@@ -5,6 +5,10 @@
         Nuevos Registro
       </h4>
       <form #registroForm="ngForm" (ngSubmit)="enviarRegistro(registroForm)">
+          <div class="form-group">
+              <input id="id" type="hidden" class="form-control" name="id" #nombre="ngModel"
+                [(ngModel)]="usuarioService.seleccionarUsuario.id">
+            </div>
         <div class="form-group">
           <input id="nombre" type="text" class="form-control" name="nombre" #nombre="ngModel"
             [(ngModel)]="usuarioService.seleccionarUsuario.nombre" placeholder="Nombre" required>
@@ -24,6 +28,23 @@
 
     </div>
     <div class="col-md-9">
-      <app-usuarios></app-usuarios>
+        <h4>
+            Usuarios Registrados
+          </h4>
+          <div class="row">
+            <div *ngFor="let usuario of usuarioService.usuarios" class="col-md-6">
+                <div class="card usuario">
+                  <h5 class="card-header">{{usuario.nombre}}</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">Correo: {{usuario.email}}</h5>
+                    <p class="card-text">Password: {{usuario.password}}</p>
+                    <a href="#" class="btn btn-primary" (click)="editarUsuario(usuario)">Actualizar</a>
+                    <a href="#" class="btn btn-danger" (click)="eliminarUsuario(usuario.id, registroForm)">Eliminar</a>
+                  </div>
+                </div>
+              <div class="col-md-1"></div>
+            </div>
+          </div>
+          
     </div>
   </div>

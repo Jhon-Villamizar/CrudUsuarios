@@ -17,17 +17,17 @@ export class UsuarioService {
     listarUsuarios() {
         return this.http.get(this.URL_API);
     }
-    buscarUsuario(email: string) {
-        return this.http.get(this.URL_API + `/${email}`);
+    buscarUsuario(usuario: Usuario) {
+        return this.http.get(this.URL_API + `/${usuario.email}`);
     }
     crearUsuario(usuario: Usuario) {
         return this.http.post(this.URL_API, usuario);
     }
     editarUsuario(usuario: Usuario) {
-        return this.http.put(this.URL_API + `/${usuario._id}`, usuario);
+        return this.http.put(this.URL_API + `/${usuario.id}`, usuario);
     }
-    eliminarLugar(_id: number) {
-        return this.http.delete(this.URL_API + `/${_id}`);
+    eliminarUsuario(id: number) {
+        return this.http.delete(this.URL_API + `/${id}`);
     }
 }
 
