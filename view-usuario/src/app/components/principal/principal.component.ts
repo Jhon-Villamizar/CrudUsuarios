@@ -16,6 +16,10 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
     this.listarUsarios();
   }
+  /**
+   * metodo que envia el registro o la actualizacion del usuario
+   * @param form 
+   */
   enviarRegistro(form?: NgForm) {
     console.log(form.value);
     if (form.value.id) {
@@ -32,6 +36,9 @@ export class PrincipalComponent implements OnInit {
       })
     }
   }
+  /**
+   * metodo que lista todos los usuarios
+   */
   listarUsarios(){
     this.usuarioService.listarUsuarios()
       .subscribe(res => {
@@ -39,11 +46,20 @@ export class PrincipalComponent implements OnInit {
         console.log( this.usuarioService.usuarios);
       });
   }
+  /**
+   * metodo que selecciona el usuario a actualizar y lo pinta en el formulario
+   * @param usuario 
+   */
   editarUsuario(usuario:Usuario){
     console.log('Editar');
     this.usuarioService.seleccionarUsuario = usuario;
     
   }
+  /**
+   * metodo que elimina el usuario seleccionado
+   * @param id 
+   * @param form 
+   */
   eliminarUsuario(id: number, form:NgForm){
     console.log('Eliminar');
     if(confirm('Esta seguro de eliminar este Usuario?')){
@@ -53,7 +69,10 @@ export class PrincipalComponent implements OnInit {
       });
     }
   }
-
+  /**
+   * metodo que borra el formulario al acutualizar o crear nuevo registro 
+   * @param form 
+   */
   borrarForm(form?: NgForm) {
     if(form) {
       form.reset();

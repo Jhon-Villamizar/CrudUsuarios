@@ -23,11 +23,28 @@ namespace ApiUsuarios.Controllers
 
         //funcion que busca un usuario por email
         [HttpGet]
-        public Usuario BuscarUsuario(string email)
+        public Boolean BuscarUsuario(string email, string password)
         {
             using (var context = new ApiContext())
             {
-                return context.Usuarios.FirstOrDefault(x => x.email == email);
+                var usuario = context.Usuarios.FirstOrDefault(x => x.email == email);
+                if (usuario == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    string base64Encoded = password;
+                    string base64Decoded;
+                    byte[] data = System.Convert.FromBase64String(base64Encoded);
+                    base64Decoded = System.Text.ASCIIEncoding.ASCII.GetString(data);
+                    Console.WriteLine(base64Decoded);
+                    if (usuario.email == email && usuario.password == base64Decoded)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
             }
         }
         

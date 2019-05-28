@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { NgForm } from '@angular/forms';
-import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-login',
@@ -14,22 +13,47 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  /**
+   * variables que mustra el login y los usuarios
+   */
   principal = false;
   login = true;
-
-  cambioEstado(mostrarP) {
+  /**
+   * variables que guardan los datos de autenticacion
+   */
+  email = "";
+  password = "";
+  /**
+   * metodo que mustra usuarios y oculata el login
+   */
+  cambioEstado(form?: NgForm) {
     if (this.login === true) {
-      console.log('hi =>', this.login);
-      this.login = false;
-      this.principal = true;
-      console.log('login =>', this.login);
+      console.log(form.value);
+      this.email = form.value.email;
+      this.password = btoa(form.value.password);
+      console.log('password => ', this.password);
+      
+      this.autenticar(this.email, this.password)
     }
   }
-  buscarUsuario(usuario: Usuario, form: NgForm){
-    this.usuarioService.buscarUsuario(usuario)
-      .subscribe(res => {
-        console.log(this.usuarioService.seleccionarUsuario = usuario);
-        
-      })
+
+  /**
+   * metodo que valida email y passwor del usuario, encripta password y autoriza el paso a usuarios
+   * @param email 
+   * @param password 
+   */
+  autenticar(email: string, password: string){
+    this.usuarioService.buscarUsuario(email,password)
+    .subscribe(res =>{
+      console.log('respuesta => ', res);
+      if(res === true){
+        this.login = false;
+        this.principal = true;
+      }
+      else{
+        alert('Usuario no registrado');
+      }
+      
+    })
   }
 }
