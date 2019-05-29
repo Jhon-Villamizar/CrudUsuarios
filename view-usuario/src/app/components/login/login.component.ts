@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.email = form.value.email;
       this.password = btoa(form.value.password);
       this.autenticar(this.email, this.password)
+      this.borrarForm(form);
     }
   }
 
@@ -39,17 +40,26 @@ export class LoginComponent implements OnInit {
    * @param email 
    * @param password 
    */
-  autenticar(email: string, password: string){
+  autenticar(email: string, password: string,){
     this.usuarioService.buscarUsuario(email,password)
     .subscribe(res =>{
       if(res === true){
         this.login = false;
         this.principal = true;
+        
       }
       else{
         alert('Usuario no registrado');
       }
-      
-    })
+    });
+  }
+   /**
+   * metodo que borra el formulario al acutualizar o crear nuevo registro 
+   * @param form 
+   */
+  borrarForm(form?: NgForm) {
+    if(form) {
+      form.reset();
+    }
   }
 }

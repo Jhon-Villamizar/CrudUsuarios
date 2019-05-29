@@ -37,8 +37,10 @@
                   <div class="card-body">
                     <h5 class="card-title">Correo: {{usuario.email}}</h5>
                     <p class="card-text">Password: {{usuario.password}}</p>
-                    <a href="#" class="btn btn-primary" (click)="editarUsuario(usuario)">Actualizar</a>
-                    <a href="#" class="btn btn-danger" (click)="eliminarUsuario(usuario.id, registroForm)">Eliminar</a>
+                    <div class="pt-3">
+                        <a href="#" class="btn btn-primary" (click)="editarUsuario(usuario)">Actualizar</a>
+                        <a href="#" class="btn btn-danger" (click)="eliminarUsuario(usuario.id, registroForm)">Eliminar</a>
+                    </div>
                   </div>
                 </div>
               <div class="col-md-1"></div>

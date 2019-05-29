@@ -57,7 +57,7 @@ export class PrincipalComponent implements OnInit {
    * @param id 
    * @param form 
    */
-  eliminarUsuario(id: number, form:NgForm){
+  eliminarUsuario(id: number,){
     if(confirm('Esta seguro de eliminar este Usuario?')){
       this.usuarioService.eliminarUsuario(id)
       .subscribe(res => {
